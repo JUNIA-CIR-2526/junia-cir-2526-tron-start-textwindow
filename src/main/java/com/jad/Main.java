@@ -11,41 +11,23 @@ public enum Main {
         TextWindowSettings settings = new TextWindowSettings();
 
         settings.addKeyboardListener(KeyEvent.VK_ESCAPE, "exit");
+        /* touches du joueur 1 */
+        settings.addKeyboardListener(KeyEvent.VK_Q, "player1_left");
+        settings.addKeyboardListener(KeyEvent.VK_D, "player1_right");
+        /* touches du joueur 2 */
+        settings.addKeyboardListener(KeyEvent.VK_NUMPAD4, "player2_left");
+        settings.addKeyboardListener(KeyEvent.VK_NUMPAD6, "player2_right");
 
-        // Joueur 1 : ZQSD
-        settings.addKeyboardListener(KeyEvent.VK_Q, "p1_left");
-        settings.addKeyboardListener(KeyEvent.VK_D, "p1_right");
-        settings.addKeyboardListener(KeyEvent.VK_Z, "p1_up");
-        settings.addKeyboardListener(KeyEvent.VK_S, "p1_down");
+        settings.setBackgroundColor(Color.PINK);
+        settings.setScreenHeight(10);
+        settings.setScreenWidth(50);
+        settings.setFontSize(42);
+        TextWindow textWindow = new TextWindow(settings);
+        textWindow.setVisible(true);
 
-        // Joueur 2 : Flèches
-        settings.addKeyboardListener(KeyEvent.VK_LEFT, "p2_left");
-        settings.addKeyboardListener(KeyEvent.VK_RIGHT, "p2_right");
-        settings.addKeyboardListener(KeyEvent.VK_UP, "p2_up");
-        settings.addKeyboardListener(KeyEvent.VK_DOWN, "p2_down");
-
-        TextWindow tw = new TextWindow(settings);
-        tw.setVisible(true);
-
-        Game game = new Game(60, 25);
-
-        while (game.isRunning() && tw.isOff("exit")) {
-            // Joueur 1
-            if (tw.isOn("p1_left"))  game.getP1().turnLeft();
-            if (tw.isOn("p1_right")) game.getP1().turnRight();
-            if (tw.isOn("p1_up"))    game.getP1().turnLeft();
-            if (tw.isOn("p1_down"))  game.getP1().turnRight();
-
-            // Joueur 2
-            if (tw.isOn("p2_left"))  game.getP2().turnLeft();
-            if (tw.isOn("p2_right")) game.getP2().turnRight();
-            if (tw.isOn("p2_up"))    game.getP2().turnLeft();
-            if (tw.isOn("p2_down"))  game.getP2().turnRight();
-
-            game.update();
-            game.draw(tw);
-
-            Thread.sleep(120);
+        Point lastMousePosition;
+        while (textWindow.isOff("exit")) {
+            textWindow.display("YOULOU");
         }
 
         tw.display("GAME OVER !");
