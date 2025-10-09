@@ -12,14 +12,17 @@ public enum Main {
     public static void main(String[] args) {
         TextWindowSettings settings = new TextWindowSettings();
         settings.addKeyboardListener(KeyEvent.VK_ESCAPE, "exit");
+        settings.addKeyboardListener(KeyEvent.VK_Q, "player1_left");
+
+        settings.setScreenHeight(10);
+        settings.setScreenWidth(50);
         TextWindow textWindow = new TextWindow(settings);
         textWindow.setVisible(true);
 
         Point lastMousePosition;
         while (textWindow.isOff("exit")) {
-            lastMousePosition = textWindow.getMousePosition();
-            StringBuilder message = new StringBuilder("Press ESC to exit.\n");
-            textWindow.display(message.toString());
+
+//            textWindow.display(message.toString());
         }
         textWindow.close();
     }
