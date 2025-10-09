@@ -37,6 +37,8 @@ public class Game {
         tw.addKeyboardListener(KeyEvent.VK_S, "p2_down");
         tw.addKeyboardListener(KeyEvent.VK_Q, "p2_left");
 
+        tw.addKeyboardListener(KeyEvent.VK_ESCAPE, "exit");
+
         if (tw.isOn("p1_up")) {
             player1.setDirection(0);
         }
